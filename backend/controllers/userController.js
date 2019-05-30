@@ -91,6 +91,7 @@ exports.user_sign_in = function(req, res) {
 						success: true,
 						code: 200,
 						token: token,
+						id: user._id,
 					});
 				} else if (!isMatch) {
 					res.send({
@@ -142,3 +143,46 @@ exports.user_get_info = function(req, res, next) {
 		});
 	});
 }
+
+//Update profile
+exports.user_update_profile = function(req, res) {
+	if (!req.params.id) {
+		return res.send({
+			success: false,
+			code: 400,
+			err: "No id in req",
+		});
+	}
+
+	if (!req.body) {
+		return res.send({
+			success: false,
+			code: 400,
+			err: "No info to be updated",
+		});
+	}
+
+	User.findByIdAndUpdate(req.params.id, {$set: req.body}, function(err, user) {
+		if (err) {
+			return res.send({
+				success: false,
+				code: 600,
+				err: "Error updating profile",
+			});
+		}
+
+		if (!user) {
+			return res.send({
+				success: false,
+				code: 601,
+				err: "Can't find user with given ID",
+			});
+		}
+
+		res.send({
+			success: true,
+			code: 200,
+			status: "Success updating profile",
+		});
+	});
+};
