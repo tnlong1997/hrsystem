@@ -145,7 +145,7 @@ exports.user_get_info = function(req, res, next) {
 }
 
 //Update profile
-exports.user_update_profile = function(req, res) {
+exports.user_update_info = function(req, res) {
 	if (!req.params.id) {
 		return res.send({
 			success: false,
@@ -183,6 +183,7 @@ exports.user_update_profile = function(req, res) {
 			success: true,
 			code: 200,
 			status: "Success updating profile",
+			user: user,
 		});
 	});
 };
