@@ -200,7 +200,7 @@ exports.user_update_info = function(req, res) {
 		res.send({
 			success: true,
 			code: 200,
-			status: "Success updating profile",
+			check: "Success updating profile",
 			user: user,
 		});
 	});
