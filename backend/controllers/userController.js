@@ -3,6 +3,24 @@ var bcrypt = require('bcrypt-nodejs');
 var secret = require('../config/secret');
 var jwt = require('jsonwebtoken');
 
+exports.user_get_all_users = function(req, res, next) {
+	User.find()
+		.exec(function(err, userList) {
+			if (err) {
+				return res.send({
+					success: false,
+					code: 400,
+					err: err.message
+				});
+			}
+			res.send({
+				success: true,
+				code: 200,
+				users: userList,
+			});
+		});
+}
+
 exports.user_sign_up = function(req, res, next) {
 	req.body.password = bcrypt.hashSync(req.body.password);
 	var newUser = new User(
