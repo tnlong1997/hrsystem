@@ -10,10 +10,16 @@ var teamSchema = new Schema({
 		required: [true, "The team name is needed"],
 	},
 	leader: {
-		type: String,
+		type: Schema.Types.ObjectId,
+		ref: 'User',
 		required: [true, "The leader is needed"],
 	},
-	members: [String],
+	members: {
+		type: [Schema.Types.ObjectId],
+		ref: 'User',
+	}
 });
+
+teamSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Team', teamSchema);
