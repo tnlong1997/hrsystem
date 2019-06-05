@@ -14,10 +14,10 @@ var teamSchema = new Schema({
 		ref: 'User',
 		required: [true, "The leader is needed"],
 	},
-	members: {
-		type: [Schema.Types.ObjectId],
+	members: [{
+		type: Schema.Types.ObjectId,
 		ref: 'User',
-	}
+	}],
 });
 
 teamSchema.plugin(uniqueValidator);
