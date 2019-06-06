@@ -4,7 +4,7 @@ exports.team_create = function(req, res, next) {
 	var newTeam = new Team(req.body);
 	newTeam.save(function(err) {
 		if (err) {
-			res.send({
+			return res.send({
 				code: 600,
 				err: err.message,
 			});
@@ -24,7 +24,7 @@ exports.team_get_info = function(req, res, next) {
 		.populate("members", "name")
 		.exec((err, team) => {
 			if (err) {
-				res.send({
+				return res.send({
 					code: 600,
 					err: err.message,
 				});
