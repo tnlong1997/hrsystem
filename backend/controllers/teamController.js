@@ -44,6 +44,33 @@ exports.team_get_info = function(req, res, next) {
 		});
 }
 
+exports.team_get_all = function(req, res, next) {
+	Team
+		.find()
+		.populate("leader", "name")
+		.populate("members", "name")
+		.exec((err, teams) => {
+			if (err) {
+				return res.send({
+					code: 600,
+					err: err.message,
+				});
+			}
+			if (!teams) {
+				return res.send({
+					code: 600,
+					err: err.message,
+				});
+			} else {
+				return res.send({
+					code: 200,
+					message: "Successful request",
+					teams: teams,
+				});
+			}
+		});
+}
+
 exports.team_update_info = function(req, res, next) {
 
 }
