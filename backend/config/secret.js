@@ -1,1 +1,1 @@
-module.exports = 'primor.super.super.secret.asdasdasfadwadsadasasdas.longdeptrai.sadasfndqwdwqdas.hoangdeptrai.asdsadsadas';
+module.exports = 'primor.super.super.secret.asdasdasfadwadsadasasdas.hungdeptrai.sadasfndqwdwqdas.hungsieudeptrai.asdsadsadas';
