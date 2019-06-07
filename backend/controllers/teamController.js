@@ -72,5 +72,44 @@ exports.team_get_all = function(req, res, next) {
 }
 
 exports.team_update_info = function(req, res, next) {
+	if (!req.params.id) {
+		return res.send({
+			sucess: false,
+			code: 400,
+			err: "No id in req",
+		});
+	}
 
-}
+	if (!req.body) {
+		return res.send({
+			success: false,
+			code: 400,
+			err: "No team changes",
+		});
+	}
+
+	Team.findByIdAndUpdate(req.params.id, {$set: req.body}, function(err,team)) {
+		if (err) {
+			return res.send({
+				success: false,
+				code: 600,
+				err: "Error updating team",
+			});
+		}
+
+		if (!team) {
+			return res.send({
+				success: false,
+				code: 601,
+				err: "Can't find team with given ID",
+			});
+		}
+
+		res.send({
+			success: true,
+			code: 200,
+			check: "Success updating profile",
+			team: team,
+		})
+	});
+};
