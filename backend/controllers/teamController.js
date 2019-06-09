@@ -88,7 +88,7 @@ exports.team_update_info = function(req, res, next) {
 		});
 	}
 
-	Team.findByIdAndUpdate(req.params.id, {$set: req.body}, function(err,team)) {
+	Team.findByIdAndUpdate(req.params.id, {$set: req.body}, function(err,team) {
 		if (err) {
 			return res.send({
 				success: false,
