@@ -72,7 +72,7 @@ exports.team_get_all = function(req, res, next) {
 }
 
 exports.team_update_info = function(req, res, next) {
-	if (!req.params.id) {
+	if (!req.params.teamId) {
 		return res.send({
 			sucess: false,
 			code: 400,
@@ -88,7 +88,8 @@ exports.team_update_info = function(req, res, next) {
 		});
 	}
 
-	Team.findByIdAndUpdate(req.params.id, {$set: req.body}, function(err,team) {
+	Team.findByIdAndUpdate(req.params.teamId, {$set: req.body}, function(err,team) {
+		console.log(req.params.teamId);
 		if (err) {
 			return res.send({
 				success: false,
