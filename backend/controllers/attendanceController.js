@@ -2,7 +2,7 @@ var Attendance = require('../models/attendanceModel');
 
 exports.attendance_create = function(req,res,next) {
   var newAttendance = new Attendance(req.body);
-  newAttendance.save(function(err)) {
+  newAttendance.save(function(err) {
     if (err) {
       return res.send ({
         code: 600,
