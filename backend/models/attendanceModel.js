@@ -9,6 +9,7 @@ var attendanceSchema = new Schema(
     date: {
       type: String,
       required:[true, 'Date is required'],
+      unique: [true, 'Date is unique'],
     },
     timein: {
       type: String,
