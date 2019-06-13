@@ -39,7 +39,7 @@ exports.attendance_get_all = function (req,res) {
       } else {
         return res.send ({
           code: 200,
-          message: "Successful request".
+          message: "Successful request",
           attendances: attendances,
         });
       }
