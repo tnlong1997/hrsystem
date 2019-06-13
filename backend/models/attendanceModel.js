@@ -9,11 +9,10 @@ var attendanceSchema = new Schema(
     date: {
       type: String,
       required:[true, 'Date is required'],
-      unique: [true, 'Date is unique'],
     },
     timein: {
       type: String,
-      required: [true, 'Timein is required'],
+      required: [true, 'Timein is required'], 
     },
     timeout: {
       type: String,
@@ -26,6 +25,6 @@ var attendanceSchema = new Schema(
   }
 );
 
-attendanceSchema.plugin(uniqueValidator);
+// attendanceSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Attendance', attendanceSchema);
