@@ -17,13 +17,9 @@ exports.attendance_create = function(req,res,next) {
   });
 };
 
-exports.attendance_get_all = function (req,res) {
+exports.attendance_get_all = function (req,res, next) {
   Attendance
-    .find()
-    // .populate("date", "date")
-    // .populate("timein", "time in")
-    // .populate("timeout", "time out")
-    // .populate("status", "status")
+    .find({userID: req.params.id})
     .exec((err, attendances) => {
       if (err) {
         return res.send ({

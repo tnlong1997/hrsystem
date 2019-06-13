@@ -12,7 +12,7 @@ var attendanceSchema = new Schema(
     },
     timein: {
       type: String,
-      required: [true, 'Timein is required'], 
+      required: [true, 'Timein is required'],
     },
     timeout: {
       type: String,
@@ -22,6 +22,10 @@ var attendanceSchema = new Schema(
       type: String,
       default: "",
     },
+    userID: {
+      type: String,
+      require: [true, 'UserID is required'],
+    }
   }
 );
 
