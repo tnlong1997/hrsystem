@@ -16,3 +16,32 @@ exports.attendance_create = function(req,res,next) {
     });
   });
 };
+
+exports.attendance_get_all = function (req,res) {
+  Attendance
+    .find()
+    .populate("date", "date")
+    .populate("timein", "time in")
+    .populate("timeout", "time out")
+    .populate("status", "status")
+    .exec((err, attendances) => {
+      if (err) {
+        return res.send ({
+          code: 600,
+          err: err.message,
+        });
+      }
+      if (!attendances) {
+        return res.send ({
+          code: 600,
+          err: err.message,
+        });
+      } else {
+        return res.send ({
+          code: 200,
+          message: "Successful request".
+          attendances: attendances,
+        });
+      }
+    });
+}
