@@ -10,5 +10,5 @@ router.put('/info/:id', userController.user_update_info);
 router.get('/', userController.user_get_all_users);
 router.post('/:id/attendances', attendanceController.attendance_create);
 router.get('/:id/attendances/all', attendanceController.attendance_get_all);
-
+router.put('/attendances/:attendanceId/info', attendanceController.attendance_edit);
 module.exports = router;

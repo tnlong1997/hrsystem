@@ -41,3 +41,47 @@ exports.attendance_get_all = function (req,res, next) {
       }
     });
 }
+
+exports.attendance_edit = function(req,res,next) {
+  if (!req.params.attendanceId) {
+    return res.send({
+      success: false,
+      code: 400,
+      err: "No id in req",
+    });
+  }
+
+  if (!req.body) {
+    return res.send({
+      success: false,
+      code: 400,
+      err: "No attendance changes",
+    });
+  }
+
+  Attendance.findByIdAndUpdate(req.params.attendanceId, {$set: req.body}, function(err, attend) {
+    console.log(req.params.attendanceId);
+    if (err) {
+      return res.send({
+        success: false,
+        code: 600,
+        err: "Error updating attendance",
+      });
+    }
+
+    if (!attend) {
+      return res.send ({
+        success: false,
+        code: 601,
+        err: "Can't find attendance with given ID",
+      });
+    }
+
+    res.send({
+      success: true,
+      code: 200,
+      check: "Success finishing attendance",
+      attendance: attend,
+    })
+  });
+};
