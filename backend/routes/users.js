@@ -18,6 +18,6 @@ router.put('/attendances/:attendanceId/info', attendanceController.attendance_ed
 // leave
 router.post('/:id/leave', leaveController.leave_create);
 router.get('/:id/:leaveId/info', leaveController.leave_get_info);
-
+router.put('/:id/:leaveId/info', leaveController.leave_edit);
 
 module.exports = router;

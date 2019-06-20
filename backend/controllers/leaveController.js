@@ -43,3 +43,47 @@ exports.leave_get_info = function(req,res,next) {
       }
     });
 }
+
+exports.leave_edit = function(req,res,next) {
+  if (!req.params.leaveId) {
+    return res.send({
+      success: false,
+      code: 400,
+      err: "No id in req",
+    });
+  }
+
+  if (!req.body) {
+    return res.send({
+      success: false,
+      code: 400,
+      err: "No changes",
+    });
+  }
+
+  Leave.findByIdAndUpdate(req.params.leaveId, {$set: req.body}, function(err, leave) {
+    console.log(req.params.leaveId);
+    if (err) {
+      return res.send({
+        success: false,
+        code: 600,
+        err: "Error updating leave",
+      });
+    }
+
+    if (!leave) {
+      return res.send ({
+        success: false,
+        code: 601,
+        err: "Can't find leave with given ID",
+      });
+    }
+
+    res.send({
+      success: true,
+      code: 200,
+      check: "Successfully process leave",
+      leave: leave,
+    })
+  });
+};
