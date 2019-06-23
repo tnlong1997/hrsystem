@@ -19,7 +19,8 @@ exports.team_create = function(req, res, next) {
 
 exports.team_get_info = function(req, res, next) {
 	Team
-		.findOne({_id: req.params.teamId})
+		// .findOne({_id: req.params.teamId})
+		.find({members: req.params.id})
 		.populate("leader", "name")
 		.populate("members", "name")
 		.exec((err, team) => {

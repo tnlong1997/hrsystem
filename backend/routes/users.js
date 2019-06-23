@@ -3,6 +3,7 @@ var router = express.Router();
 const userController = require("../controllers/userController");
 const attendanceController = require("../controllers/attendanceController");
 const leaveController = require("../controllers/leaveController");
+const teamController = require("../controllers/teamController");
 
 router.post('/signup', userController.user_sign_up);
 router.post('/signin', userController.user_sign_in);
@@ -17,7 +18,12 @@ router.put('/attendances/:attendanceId/info', attendanceController.attendance_ed
 
 // leave
 router.post('/:id/leave', leaveController.leave_create);
-router.get('/:id/:leaveId/info', leaveController.leave_get_info);
-router.put('/:id/:leaveId/info', leaveController.leave_edit);
+router.get('/:id/leaves/:leaveId/info', leaveController.leave_get_info);
+router.put('/:id/leaves/:leaveId/info', leaveController.leave_edit);
+router.get('/:id/leaves/all', leaveController.leave_get_all); // For specific user
+router.get('/leader/:id', leaveController.leave_leader); // For leader of team only
+
+// team
+router.get('/:id/team', teamController.team_get_info);
 
 module.exports = router;

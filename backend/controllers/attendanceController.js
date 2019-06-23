@@ -19,7 +19,7 @@ exports.attendance_create = function(req,res,next) {
 
 exports.attendance_get_all = function (req,res, next) {
   Attendance
-    .find({userID: req.params.id})
+    .find({userId: req.params.id})
     .exec((err, attendances) => {
       if (err) {
         return res.send ({

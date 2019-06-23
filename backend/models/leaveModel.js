@@ -10,12 +10,12 @@ var leaveSchema = new Schema(
       type: String,
       required: [true, 'leave type is required'],
     },
-    employee_name: {
+    employee: {
       type: Schema.Types.ObjectId,
       ref: 'User',
       required:[true, 'employee is required'],
     },
-    manager: {
+    leader: {
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: [true, "manager is required"],

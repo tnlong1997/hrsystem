@@ -17,11 +17,12 @@ exports.leave_create = function(req,res,next) {
   });
 };
 
+// Get specific info
 exports.leave_get_info = function(req,res,next) {
   Leave
     .findOne({_id: req.params.leaveId})
     .populate("employee_name", "name")
-    .populate("manager", "name")
+    .populate("leader", "name")
     .exec((err, leave) => {
       if (err) {
         return res.send({
@@ -44,6 +45,7 @@ exports.leave_get_info = function(req,res,next) {
     });
 }
 
+// Edit leave
 exports.leave_edit = function(req,res,next) {
   if (!req.params.leaveId) {
     return res.send({
@@ -87,3 +89,59 @@ exports.leave_edit = function(req,res,next) {
     })
   });
 };
+
+// Get all leaves of specific user
+exports.leave_get_all = function(req,res,next) {
+  Leave
+    .find({employee: req.params.id})
+    .populate("employee", "name")
+    .populate("leader", "name")
+    .exec((err, leaves) => {
+      if (err) {
+        return res.send ({
+          code: 600,
+          err: err.message,
+        });
+      }
+      if (!leaves) {
+        return res.send ({
+          code: 600,
+          err: err.message,
+        });
+      } else {
+        return res.send ({
+          code: 200,
+          message: "Successful request",
+          leaves: leaves,
+        });
+      }
+    });
+}
+
+exports.leave_leader = function(req,res,next) {
+  Leave
+  Leave
+    .find({leader: req.params.id})
+    .populate("employee", "name")
+    .populate("leader", "name")
+    .exec((err, leaves) => {
+      if (err) {
+        return res.send ({
+          code: 600,
+          err: err.message,
+        });
+      }
+      if (!leaves) {
+        return res.send ({
+          code: 600,
+          err: err.message,
+        });
+      } else {
+        return res.send ({
+          code: 200,
+          message: "Successful request",
+          leaves: leaves,
+        });
+      }
+    });
+}
