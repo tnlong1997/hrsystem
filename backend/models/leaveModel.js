@@ -26,7 +26,7 @@ var leaveSchema = new Schema(
     },
     start_time: {
       type: String,
-      default: "N/A",
+      required: [true, "start time is required"],
     },
     end_date: {
       type: String,
@@ -34,7 +34,11 @@ var leaveSchema = new Schema(
     },
     end_time: {
       type: String,
-      default: "N/A",
+      required: [true, "end time is required"],
+    },
+    duration: {
+      type: String,
+      required: [true, "duration is required"],
     },
     reason: {
       type: String,
