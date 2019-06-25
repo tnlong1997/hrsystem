@@ -90,13 +90,12 @@ exports.leave_edit = function(req,res,next) {
   });
 };
 
-// Get all leaves of specific user
 exports.leave_get_all = function(req,res,next) {
   Leave
     .find({$or: [
-      {employee: req.params.id}, {leader: req.params.id}
-      ]
-      })
+    {employee: req.params.id}, {leader: req.params.id}
+    ]
+    })
     .populate("employee", "name")
     .populate("leader", "name")
     .exec((err, leaves) => {
