@@ -120,7 +120,6 @@ exports.leave_get_all = function(req,res,next) {
 
 exports.leave_leader = function(req,res,next) {
   Leave
-  Leave
     .find({leader: req.params.id})
     .populate("employee", "name")
     .populate("leader", "name")
