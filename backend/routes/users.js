@@ -20,8 +20,7 @@ router.put('/attendances/:attendanceId/info', attendanceController.attendance_ed
 router.post('/:id/leave', leaveController.leave_create);
 router.get('/:id/leaves/:leaveId/info', leaveController.leave_get_info);
 router.put('/:id/leaves/:leaveId/info', leaveController.leave_edit);
-router.get('/:id/leaves/all', leaveController.leave_get_all); // For specific user
-router.get('/leader/:id', leaveController.leave_leader); // For leader of team only
+router.get('/:id/leaves/all', leaveController.leave_get_all); 
 
 // team
 router.get('/:id/team', teamController.team_get_info);
