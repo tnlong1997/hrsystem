@@ -20,7 +20,9 @@ exports.team_create = function(req, res, next) {
 exports.team_get_info = function(req, res, next) {
 	Team
 		// .findOne({_id: req.params.teamId})
-		.find({leader: req.params.id})
+		.find({$or: [
+			{members: req.params.id}, {leader: req.params.id}
+		]})
 		.populate("leader", "name")
 		.populate("members", "name")
 		.exec((err, team) => {
