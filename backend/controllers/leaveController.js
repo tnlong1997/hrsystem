@@ -21,7 +21,7 @@ exports.leave_create = function(req,res,next) {
 exports.leave_get_info = function(req,res,next) {
   Leave
     .findOne({_id: req.params.leaveId})
-    .populate("employee_name", "name")
+    .populate("employee", "name")
     .populate("leader", "name")
     .exec((err, leave) => {
       if (err) {
