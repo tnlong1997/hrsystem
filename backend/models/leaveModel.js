@@ -47,6 +47,10 @@ var leaveSchema = new Schema(
     status: {
       type: String,
       default: "Pending",
+    },
+    decline: {
+      type: String,
+      default: "",
     }
   }
 );
