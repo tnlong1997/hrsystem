@@ -8,7 +8,7 @@ var secret = require('../config/secret');
 router.use(function(req, res, next) {
     // check header or url parameters or post parameters for token
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  
+
     // decode token
     if (token) {
       // verifies secret and checks exp
@@ -30,3 +30,9 @@ router.use(function(req, res, next) {
       });
     }
   });
+
+  router.post('/', performanceController.performance_create);
+  router.get('/:performanceId', performanceController.performance_get_info);
+  router.put('/:performanceId', performanceController.performance_edit);
+
+  module.exports = router;
