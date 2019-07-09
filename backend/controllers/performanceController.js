@@ -82,3 +82,29 @@ exports.performance_edit = function(req, res) {
         })
     });
 };
+
+exports.performance_all = function (req,res,next) {
+  Performance
+    .find()
+    .populate("team")
+    .exec((err, performances) => {
+      if (err) {
+        return res.send({
+          code: 600,
+          err: err.message,
+        });
+      }
+      if (!performances) {
+        res.send({
+          code: 600,
+          err: "No performance found",
+        });
+      } else {
+        res.send({
+          code: 200,
+          message: "Successful request",
+          performance: performances,
+        });
+      }
+    });
+}

@@ -32,7 +32,8 @@ router.use(function(req, res, next) {
   });
 
   router.post('/', performanceController.performance_create);
-  router.get('/:performanceId', performanceController.performance_get_info);
-  router.put('/:performanceId', performanceController.performance_edit);
+  router.get('/:performanceId/info', performanceController.performance_get_info);
+  router.put('/:performanceId/info', performanceController.performance_edit);
+  router.get('/all', performanceController.performance_all);
 
   module.exports = router;
