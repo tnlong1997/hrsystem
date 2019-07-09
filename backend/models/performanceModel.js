@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var performanceSchema = new Schema(
     {
-        KPI: {
+        kpi: {
             type: String,
             required: [true, "KPI is required"],
         },
