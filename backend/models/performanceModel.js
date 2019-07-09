@@ -33,8 +33,14 @@ var performanceSchema = new Schema(
             default: "N/A",
         },
         manager: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'User',
             required: [true, "Manager is required"],
+        },
+        employee: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            required: [true, "Employee is required"],
         },
         status: {
             type: String,
