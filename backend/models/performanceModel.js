@@ -44,7 +44,7 @@ var performanceSchema = new Schema(
         },
         status: {
             type: String,
-            default: "Inactive",
+            default: "Active",
         }
     }
 );
