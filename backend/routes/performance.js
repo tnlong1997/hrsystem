@@ -35,5 +35,6 @@ router.use(function(req, res, next) {
   router.get('/:performanceId/info', performanceController.performance_get_info);
   router.put('/:performanceId/info', performanceController.performance_edit);
   router.get('/all', performanceController.performance_all);
+  router.get('/info/:id', performanceController.performance_by_id);
 
   module.exports = router;

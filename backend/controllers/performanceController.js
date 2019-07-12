@@ -108,3 +108,28 @@ exports.performance_all = function (req,res,next) {
       }
     });
 }
+
+exports.performance_by_id = function (req,res) {
+  Performance
+    .find({employee: req.params.id})
+    .exec((err, performances) => {
+      if (err) {
+        return res.send({
+          code: 600,
+          err: err.message,
+        });
+      }
+      if (!performances) {
+        res.send({
+          code: 600,
+          err: err.message,
+        });
+      } else {
+        res.send({
+          code: 200,
+          message: "Successful request",
+          performance: performances,
+        });
+      }
+    });
+}
