@@ -113,7 +113,8 @@ exports.performance_all = function (req,res,next) {
 
 exports.performance_by_id = function (req,res) {
   Performance
-    .find({employee: req.params.id})
+    .find({$or: [
+      {employee: req.params.id}, {manager: req.params.id}]})
     .exec((err, performances) => {
       if (err) {
         return res.send({
