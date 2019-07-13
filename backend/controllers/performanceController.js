@@ -20,6 +20,8 @@ exports.performance_create = function(req,res) {
 exports.performance_get_info = function(req,res) {
     Performance
         .findOne({_id: req.params.performanceId})
+        .populate("manager", "name")
+        .populate("employee", "name")
         .exec((err, performance) => {
             if (err) {
                 return res.send({
