@@ -8,11 +8,10 @@ var userSchema = new Schema(
 	{
 		email: {
 			type: String,
-			required: [true, 'Email is required'],
+			required: [true, 'Username is required'],
 			// maxlength: 100,
 			// minlength: [8, 'Email should be longer than 8 characters'],
-			unique: [true, 'This email has been used'],
-			match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Invalid email'],
+			unique: [true, 'This username has been used'],
 		},
 		password: {
 			type: String,
