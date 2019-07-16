@@ -9,6 +9,14 @@ var attendanceSchema = new Schema(
       type: String,
       required:[true, 'Date is required'],
     },
+    month: {
+      type: String,
+      required: [true, 'Month is required'],
+    },
+    year: {
+      type: String,
+      required: [true, 'Year is required'],
+    },
     timein: {
       type: String,
       required: [true, 'Timein is required'],
