@@ -46,6 +46,7 @@ router.get('/', userController.user_get_all_users);
 router.post('/:id/attendances', attendanceController.attendance_create);
 router.get('/:id/attendances/all', attendanceController.attendance_get_all);
 router.put('/attendances/:attendanceId/info', attendanceController.attendance_edit);
+router.get('/:id/attendances/info', attendanceController.attendance_get_byId);
 
 // leave
 router.post('/:id/leave', leaveController.leave_create);

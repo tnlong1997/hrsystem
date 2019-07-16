@@ -85,3 +85,28 @@ exports.attendance_edit = function(req,res,next) {
     })
   });
 };
+
+exports.attendance_get_byId = function (res,req) {
+  Attendance
+    .find({userID: req.params.id})
+    .exec((err, attendances) => {
+      if (err) {
+        return res.send({
+          code: 600,
+          err: err.message,
+        });
+      }
+      if (!attendances) {
+        res.send({
+          code: 600,
+          err: err.message,
+        });
+      } else {
+        res.send({
+          code: 200,
+          message: "Successful request",
+          attendances: attendances,
+        });
+      }
+    });
+}
