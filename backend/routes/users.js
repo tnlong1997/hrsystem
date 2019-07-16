@@ -4,6 +4,7 @@ const userController = require("../controllers/userController");
 const attendanceController = require("../controllers/attendanceController");
 const leaveController = require("../controllers/leaveController");
 const teamController = require("../controllers/teamController");
+const summaryController = require("../controllers/summaryController");
 var jwt = require('jsonwebtoken');
 var secret = require('../config/secret');
 
@@ -56,4 +57,6 @@ router.get('/:id/leaves/all', leaveController.leave_get_all);
 // team
 router.get('/:id/team', teamController.team_get_info);
 
+// summary
+router.post('/:id/summary', summaryController.summary_create);
 module.exports = router;
