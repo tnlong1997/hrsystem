@@ -59,4 +59,7 @@ router.get('/:id/team', teamController.team_get_info);
 
 // summary
 router.post('/:id/summary', summaryController.summary_create);
+router.get('/:id/summary/info', summaryController.summary_all);
+
+
 module.exports = router;
