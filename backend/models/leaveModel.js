@@ -23,7 +23,7 @@ var leaveSchema = new Schema(
       type: String,
       required: [true, 'start date is required'],
     },
-    start_time: {
+    start_month: {
       type: String,
       required: [true, "start time is required"],
     },
@@ -31,7 +31,7 @@ var leaveSchema = new Schema(
       type: String,
       required: [true, "end date is required"],
     },
-    end_time: {
+    end_month: {
       type: String,
       required: [true, "end time is required"],
     },
