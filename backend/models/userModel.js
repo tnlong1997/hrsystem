@@ -53,6 +53,10 @@ var userSchema = new Schema(
 			type: String,
 			default: "",
 		},
+		rate: {
+			type: String,
+			default: "N/A",
+		},
 	}
 );
 
