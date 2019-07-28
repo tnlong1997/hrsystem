@@ -21,6 +21,8 @@ var teamsRouter = require('./routes/teams');
 var attendanceRouter = require('./routes/attendances');
 var signinRouter = require('./routes/signin');
 var performanceRouter = require('./routes/performance');
+var satisfactionRouter = require('./routes/satisfaction');
+var promotionRouter = require('./routes/promotion');
 
 var app = express();
 
@@ -40,6 +42,8 @@ app.use('/teams', teamsRouter);
 app.use('/attendances', attendanceRouter);
 app.use('/signin', signinRouter);
 app.use('/performance', performanceRouter);
+app.use('/satisfaction', satisfactionRouter);
+app.use('/promotion', promotionRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
