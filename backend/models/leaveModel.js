@@ -35,6 +35,10 @@ var leaveSchema = new Schema(
       type: String,
       required: [true, "end time is required"],
     },
+    year: {
+      type: String,
+      default: "N/A",
+    },
     duration: {
       type: String,
       required: [true, "duration is required"],
