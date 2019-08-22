@@ -119,3 +119,30 @@ exports.leave_get_all = function(req,res,next) {
       }
     });
 }
+
+exports.leave_find_by_params = function(req,res,next) {
+  Leave
+    .find({$and: [
+      {start_month: req.params.id}, {year: req.params.id}
+    ]})
+    .exec((err, leaves) => {
+      if (err) {
+        return res.send ({
+          code: 600,
+          err: err.message,
+        });
+      }
+      if (!leaves) {
+        return res.send ({
+          code: 600,
+          err: err.message,
+        });
+      } else {
+        return res.send ({
+          code: 200,
+          message: "Successful request",
+          leaves: leaves,
+        });
+      }
+    });
+}
