@@ -53,7 +53,6 @@ router.post('/:id/leave', leaveController.leave_create);
 router.get('/:id/leaves/:leaveId/info', leaveController.leave_get_info);
 router.put('/:id/leaves/:leaveId/info', leaveController.leave_edit);
 router.get('/:id/leaves/all', leaveController.leave_get_all);
-router.get('/:id/leaves/:leaveId/infos', leaveController.leave_find_by_params);
 
 // team
 router.get('/:id/team', teamController.team_get_info);
